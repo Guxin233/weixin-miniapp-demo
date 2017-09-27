@@ -1,4 +1,4 @@
-// pages/playlist/playlist.js
+// pages/musicList/musicList.js
 Page({
 
   /**

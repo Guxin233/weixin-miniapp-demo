@@ -1,0 +1,5 @@
+/* pages/musicList/musicList.wxss */
+.refresh-Btn {
+	margin : 20px; 
+	align-self: right;
+}

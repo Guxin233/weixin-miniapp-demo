@@ -1,13 +1,31 @@
 {
-  "pages":[
-		"pages/playlist/playlist",
+  "pages": [
+    "pages/musicList/musicList",
+		"pages/test/test",
     "pages/index/index",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0094ff",
     "navigationBarTitleText": "本地音乐库",
-    "navigationBarTextStyle":"white"
-  }
+    "navigationBarTextStyle": "white"
+  },
+
+	"tabBar": {
+		"position":"bottom",
+		"list": [
+			{
+				"pagePath": "pages/musicList/musicList",
+				"text": "音乐列表",
+				"iconPath": "images/game.png"
+			},
+			{
+				"pagePath": "pages/test/test",
+				"text": "播放中",
+				"iconPath": "images/play.png"
+			}
+		]
+	}
 }
