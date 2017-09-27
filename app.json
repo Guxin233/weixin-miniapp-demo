@@ -1,0 +1,12 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#0094ff",
+    "navigationBarTitleText": "本地音乐库",
+    "navigationBarTextStyle":"white"
+  }
+}
