@@ -8,7 +8,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-		intData:20
+		intData:20,
+		count:0,
   },
   //事件处理函数
   bindViewTap: function() {
@@ -16,6 +17,12 @@ Page({
       url: '../logs/logs'
     })
   },
+	Add: function(){
+		this.setData({
+			counta: this.data.count + 1
+		});
+		console.log("this.data.count = " + this.data.count);
+	},
   onLoad: function () {
 		console.log("onLoad");
 		
@@ -55,6 +62,6 @@ Page({
     })
   },
   onShow: function () {
-		//console.log("app.globalData.intData = " + app.globalData.intData + " , intData = " + this.data.intData)
+		//console.log("this.intData = " + this.data.intData);
 	},
 })

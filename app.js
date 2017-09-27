@@ -6,9 +6,6 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-		// 打印场景值
-		console.log("scene = " + options.scene);
-
     // 登录
     wx.login({
       success: res => {

@@ -1,0 +1,6 @@
+<!--playlist.wxml-->
+<view class="container">
+	<view bindtap='Add'>
+    <text class="user-motto">{{count}}</text>
+	</view>
+</view>
