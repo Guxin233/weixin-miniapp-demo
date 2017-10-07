@@ -9,3 +9,12 @@
 <button bindtap="setPlain">点击设置以上按钮plain属性</button>
 <button bindtap="setLoading">点击设置以上按钮loading属性</button>
 <button open-type="contact">进入客服会话</button>
+
+
+
+<switch wx:for="{{objectArray}}" wx:key="unique" style="display: block;"> {{item.id}} </switch>
+<button bindtap="switch"> Switch </button>
+<button bindtap="addToFront"> Add to the front </button>
+
+<switch wx:for="{{numberArray}}" wx:key="*this" style="display: block;"> {{item}} </switch>
+<button bindtap="addNumberToFront"> Add to the front </button>
