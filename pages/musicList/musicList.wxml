@@ -1,6 +1,4 @@
 <!--pages/musicList/musicList.wxml-->
 <view>
-	<button type="primary" class='refresh-Btn' bindtap="refreshMusicList">刷新音乐列表</button>
-	
-<view wx:for="{{items}}" class="listView" bindtap="showDetail" data-idIndex="{{index+1}}"><br>　　<view>{{item.name}}</view><view>{{item.id}}</view><br></view>
+	<button type="primary" class='refresh-Btn' bindtap="refreshMusicList">扫描本地音乐</button>
 </view>
