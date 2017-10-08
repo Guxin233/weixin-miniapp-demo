@@ -1,16 +1,17 @@
 {
   "pages": [
-		"pages/test/test",
     "pages/todoList/todoList",
-    "pages/musicList/musicList",
+		"pages/addItem/addItem",
     "pages/index/index",
+    "pages/test/test",
+    "pages/musicList/musicList",
     "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0094ff",
     "navigationBarTitleText": "Todo List",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
   }
-
 }

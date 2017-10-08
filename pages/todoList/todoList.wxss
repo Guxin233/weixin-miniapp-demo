@@ -1,5 +1,4 @@
 /* pages/todoList/todoList.wxss */
 .item {
-  margin: 20px;
-  
+  margin: 20rpx 50rpx;
 }

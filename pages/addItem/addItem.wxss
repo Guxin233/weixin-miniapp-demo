@@ -1,0 +1,14 @@
+/* pages/addItem.wxss */
+.page{
+	margin: 10px 20px 10px 20px;
+}
+
+.item{
+	width: 100%;
+	height: 100%;
+	font-size: 16pt;
+}
+
+.underline{
+	border-top: 1px solid #BFBFBF;
+}

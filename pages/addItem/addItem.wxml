@@ -1,0 +1,5 @@
+<!--pages/addItem.wxml-->
+<view class="page">
+	<input class='item' placeholder='我想...' focus='true' bindblur='addItem'/>
+	<view class='underline'/>
+</view>

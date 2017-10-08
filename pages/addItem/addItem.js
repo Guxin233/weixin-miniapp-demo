@@ -1,19 +1,18 @@
-// pages/todoList/todoList.js
+// pages/addItem.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-		toView: 'red',
-		scrollTop: 100
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		console.log("todoList onLoad");
+  
   },
 
   /**
@@ -27,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-		console.log("todoList onShow");
+  
   },
 
   /**
@@ -48,18 +47,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-		console.log("todoList onPullDownRefresh");
-		// 下拉页面 跳转到 添加条目页面
-		wx.navigateTo({
-			url: '../addItem/addItem',
-		});
+  
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-		console.log("todoList onReachBottom");
+  
   },
 
   /**
@@ -69,16 +64,9 @@ Page({
   
   },
 
-	// ScrollView滚动到顶部的回调
-	/*
-	scrollToUpper: function(){
-		console.log("scrollToUpper");
-	},
-
-	// ScrollView滚动到底部的回调
-	scrollToLower: function(){
-		console.log("scrollToLower");
-	},
-	*/
-
+	// 输入框失去焦点的回调，添加条目
+	addItem: function (){
+		console.log("添加条目！");
+		wx.navigateBack();
+	}
 })
