@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+		content : '',
   },
 
   /**
@@ -65,8 +65,20 @@ Page({
   },
 
 	// 输入框失去焦点的回调，添加条目
-	addItem: function (){
+	addItem: function (event){
 		console.log("添加条目！");
 		wx.navigateBack();
+
+		// 往上一级页面传参
+		var pages = getCurrentPages();
+		var currPage = pages[pages.length - 1]; // 当前页面
+		var prevPage = pages[pages.length - 2]; // 上一级页面
+
+		// 直接调用上一级页面Page对象，存储数据到上一级页面中
+		var str = event.detail.value;
+		prevPage.setData({
+			'addItemContent': str,
+		});
+
 	}
 })

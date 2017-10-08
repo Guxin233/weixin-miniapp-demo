@@ -5,8 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-		toView: 'red',
-		scrollTop: 100
+		addItemContent : '',
   },
 
   /**
@@ -28,6 +27,9 @@ Page({
    */
   onShow: function () {
 		console.log("todoList onShow");
+		if (this.data.addItemContent.length != 0){
+			console.log("添加Item");
+		}
   },
 
   /**
