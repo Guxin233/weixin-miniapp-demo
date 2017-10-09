@@ -14,6 +14,11 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+// 全局函数：json --> list
+function json2list(){
+  
+};
+
 module.exports = {
   formatTime: formatTime
 }

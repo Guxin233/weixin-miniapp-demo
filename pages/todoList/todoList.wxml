@@ -1,27 +1,16 @@
 <!--pages/todoList/todoList.wxml-->
-	<view class='item'>下拉添加新的事项</view>
-	<view class='item'>点击事项进入专注模式</view>
-	<view class='item'>左滑删除或编辑</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
-	<view class='item'>测试数据</view>
+<view class="container">
+  <view class="list">
+    <block wx:for="{{list}}" wx:for-item="item" wx:key="id">
+      <!-- 每一条Item都是可以横向滑动的scroll-view -->
+      <scroll-view scroll-x="true" scroll-left="{{left}}">
+        <view>
+          <text>{{item.content}}</text>
+          <view class="menu rd" bindtap="del" data-id="{{item.id}}">删除</view>
+          <view class="menu lb" bindtap="top" data-id="{{item.id}}">置顶</view>
+          <view class="menu og {{item.finish}}" bindtap="finish" data-id="{{item.id}}">完成</view>
+        </view>
+      </scroll-view>
+    </block>
+  </view>
+</view>

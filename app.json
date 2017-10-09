@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/todoList/todoList",
+    "pages/test/test",
 		"pages/addItem/addItem",
     "pages/index/index",
-    "pages/test/test",
     "pages/musicList/musicList",
     "pages/logs/logs"
   ],
