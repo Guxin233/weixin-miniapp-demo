@@ -43,3 +43,27 @@
 .rd{background:orangered}
 .og{background:orange}
 .lb{background:lightskyblue}
+
+
+.bottom{
+  width:100vw;
+  height: 120rpx;
+  background:#FAFAFA;
+  position:fixed;
+  text-align: center;
+  border-top:1px solid #ddd;
+  bottom: 0;
+  right: 0;
+}
+
+.addItemView{
+  width: 100%;
+  background: lightgray;
+  text-align: center;
+}
+
+.addItemImage{
+  width: 120rpx;
+  height: 120rpx;
+  vertical-align: middle;
+}

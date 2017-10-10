@@ -13,4 +13,16 @@
       </scroll-view>
     </block>
   </view>
+
+  <!--
+  <view class='bottom'>
+
+  </view>
+ 
+ style="color:#0094ff;font-size:24px"
+  -->
+  <view class='addItemView' bindtap="addItem">
+    <image class="addItemImage" src="../../images/add.png" mode="aspectFit"/>  
+  </view>
+
 </view>

@@ -53,7 +53,7 @@ Page({
       index: 0, 
       time: 0,
       list: [
-        { id: 1, content: '下拉添加新的事项' },
+        { id: 1, content: '点击底部【+】添加新的事项' },
         { id: 2, content: '点击事项进入专注模式' },
         { id: 3, content: '左滑移除/置顶/完成' },
         { id: 4, content: '我是已完成的事项', finish: 'fn' },
@@ -83,6 +83,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
+  /*
   onPullDownRefresh: function () {
 		console.log("todoList onPullDownRefresh");
 		// 下拉页面 跳转到 添加条目页面
@@ -90,12 +91,13 @@ Page({
 			url: '../addItem/addItem',
 		});
   },
+  */
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-		console.log("todoList onReachBottom");
+		//console.log("todoList onReachBottom");
   },
 
   /**
@@ -116,6 +118,13 @@ Page({
 		console.log("scrollToLower");
 	},
 	*/
+
+  addItem: function() {
+    console.log("todoList 跳转到 addItem");
+    wx.navigateTo({
+      url: '../addItem/addItem',
+    });
+  }
 
 })
 
