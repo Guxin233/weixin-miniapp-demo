@@ -3,10 +3,10 @@
   <view class="list">
     <block wx:for="{{list}}" wx:for-item="item" wx:key="id">
       <!-- 每一条Item都是可以横向滑动的scroll-view -->
-      <scroll-view scroll-x="true" scroll-left="{{left}}">
-        <view>
-          <text>{{item.content}}</text>
-          <view class="menu rd" bindtap="del" data-id="{{item.id}}">删除</view>
+      <scroll-view class='view-body' scroll-x="true" scroll-left="{{left}}">
+        <view class="item">
+          <view class="content"><text>{{item.content}}</text></view>
+          <view class="menu rd" bindtap="del" data-id="{{item.id}}">移除</view>
           <view class="menu lb" bindtap="top" data-id="{{item.id}}">置顶</view>
           <view class="menu og {{item.finish}}" bindtap="finish" data-id="{{item.id}}">完成</view>
         </view>

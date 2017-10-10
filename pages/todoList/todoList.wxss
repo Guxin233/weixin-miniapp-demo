@@ -1,4 +1,45 @@
 /* pages/todoList/todoList.wxss */
 .list{
-  padding-bottom:28vw;
 }
+
+.view-body{
+  flex:1;
+  width:100%;
+  height:64px;
+  border-bottom: 1px solid #DADADA;
+}
+
+.item{
+  height: 64px;
+  line-height: 64px;
+  width: 160%;
+}
+
+.item .content{
+  width: 60.8%;
+  float: left;
+  margin-left: 20rpx;
+}
+
+.item .menu{
+  width: 12.5%;
+  float: left;
+  text-align: center;
+  color:snow;
+}
+
+.item .content .text{
+  vertical-align: top;
+}
+
+.item .menu{
+  width: 12.5%;
+  float: left;
+  text-align: center;
+  color:snow;
+}
+.gn{background:#1AAD16}
+.bu{background:dodgerblue}
+.rd{background:orangered}
+.og{background:orange}
+.lb{background:lightskyblue}
