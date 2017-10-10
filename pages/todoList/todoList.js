@@ -44,26 +44,43 @@ Page({
    */
   onShow: function () {
 		console.log("todoList onShow");
-		//if (this.data.addItemContent.length != 0){
-		//	console.log("添加Item");
-		//}
-
+    
     // 默认显示的条目
-    var firstData = {
-      index: 0, 
-      time: 0,
+    var defaultData = {
+      time: 0, // 上一次更新的时间
       list: [
         { id: 1, content: '点击底部【+】添加新的事项' },
         { id: 2, content: '点击事项进入专注模式' },
         { id: 3, content: '左滑移除/置顶/完成' },
         { id: 4, content: '我是已完成的事项', finish: 'fn' },
-      ], 
+      ],
     };
 
+    // 缓存的条目数据
+    var data = wx.getStorageSync('list') || defaultData;
+
+    // 是否需要添加条目Item
+    if (this.data.addItemContent.length != 0) {
+      console.log("添加Item");
+      var newItem = new Object();
+      newItem.id = data.index;
+      newItem.content = this.data.addItemContent;
+      data.list.unshift(newItem);
+    }
+
     // 读取缓存中的条目，如果不存在，就使用默认的
-    var data = wx.getStorageSync('list') || firstData;
     all = data;
+    
+    // 更新显示
     showList(this);
+
+    // 更新缓存的数据
+    try {
+      all.time = parseInt((new Date()).valueOf() / 1000);
+      wx.setStorageSync('list', all);
+    } catch (e) {
+      alert('保存失败!');
+    }
   },
 
   /**
