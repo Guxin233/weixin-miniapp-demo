@@ -1,5 +1,6 @@
 // pages/todoList/todoList.js
 var app = getApp(); // 应用实例
+var listHelper = require("../../utils/listHelper.js");
 var all = {};       // 显示的所有条目
 
 Page({
@@ -10,6 +11,7 @@ Page({
   data: {
 		addItemContent : '',
     userInfo: {},
+    list: {},
     left: 0,
   },
 
@@ -63,7 +65,7 @@ Page({
     if (this.data.addItemContent.length != 0) {
       console.log("添加Item");
       var newItem = new Object();
-      newItem.id = data.index;
+      newItem.id = data.list.length + 1;
       newItem.content = this.data.addItemContent;
       data.list.unshift(newItem);
     }
@@ -75,12 +77,7 @@ Page({
     showList(this);
 
     // 更新缓存的数据
-    try {
-      all.time = parseInt((new Date()).valueOf() / 1000);
-      wx.setStorageSync('list', all);
-    } catch (e) {
-      alert('保存失败!');
-    }
+    updateStorageData();
   },
 
   /**
@@ -136,21 +133,63 @@ Page({
 	},
 	*/
 
+  // 跳转到添加事项
   addItem: function() {
     console.log("todoList 跳转到 addItem");
     wx.navigateTo({
       url: '../addItem/addItem',
     });
-  }
+  },
 
+  // 删除事项
+  delItem: function(e) {
+    var temp = listHelper.delItemById(all.list, e.currentTarget.dataset.id);
+    all.list = temp;
+    // 更新缓存数据
+    updateStorageData();
+    // 更新界面
+    showList(this);
+  },
+
+  // 置顶事项
+  topItem: function(e) {
+    var temp = listHelper.topItemById(all.list, e.currentTarget.dataset.id);
+    all.list = temp;
+    // 更新缓存数据
+    updateStorageData();
+    // 更新界面
+    showList(this);
+  },
+  
+  // 完成事项
+  finishItem: function (e) {
+    var temp = listHelper.finishItemById(all.list, e.currentTarget.dataset.id);
+    all.list = temp;
+    // 更新缓存数据
+    updateStorageData();
+    // 更新界面
+    showList(this);
+  },
 })
 
 // 刷新显示列表
-function showList(instance) {
+function showList(currPage) {
+  console.log("刷新事项列表");
   var arr = all.list;
   // 暂时不做任何筛选
-  instance.setData({
+  currPage.setData({
     list: arr,
-    left: 0
+    left: 0 // 条目的水平偏移恢复到最左边
   })
-}
+};
+
+// 更新缓存中的数据
+function updateStorageData(){
+  console.log("更新缓存中的数据");
+  try {
+    all.time = parseInt((new Date()).valueOf() / 1000);
+    wx.setStorageSync('list', all);
+  } catch (e) {
+    alert('缓存数据更新失败!');
+  }
+};

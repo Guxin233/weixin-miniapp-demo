@@ -5,10 +5,12 @@
       <!-- 每一条Item都是可以横向滑动的scroll-view -->
       <scroll-view class='view-body' scroll-x="true" scroll-left="{{left}}">
         <view class="item">
-          <view class="content"><text>{{item.content}}</text></view>
-          <view class="menu rd" bindtap="del" data-id="{{item.id}}">移除</view>
-          <view class="menu lb" bindtap="top" data-id="{{item.id}}">置顶</view>
-          <view class="menu og {{item.finish}}" bindtap="finish" data-id="{{item.id}}">完成</view>
+          <view class="content">
+            <text class="{{item.finish}}">{{item.content}}</text>
+          </view>
+          <view class="menu rd" bindtap="delItem" data-id="{{item.id}}">移除</view>
+          <view class="menu lb" bindtap="topItem" data-id="{{item.id}}">置顶</view>
+          <view class="menu og {{item.finish}}" bindtap="finishItem" data-id="{{item.id}}">完成</view>
         </view>
       </scroll-view>
     </block>

@@ -21,13 +21,6 @@
   margin-left: 20rpx;
 }
 
-.item .menu{
-  width: 12.5%;
-  float: left;
-  text-align: center;
-  color:snow;
-}
-
 .item .content .text{
   vertical-align: top;
 }
@@ -41,8 +34,10 @@
 .gn{background:#1AAD16}
 .bu{background:dodgerblue}
 .rd{background:orangered}
-.og{background:orange}
 .lb{background:lightskyblue}
+.og{background:orange}
+.fn{text-decoration:line-through;color:#AAA}
+.item>.fn{display:none}
 
 
 .bottom{
@@ -60,6 +55,8 @@
   width: 100%;
   background: lightgray;
   text-align: center;
+  position:fixed;
+  bottom: 0;
 }
 
 .addItemImage{
