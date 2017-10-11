@@ -26,6 +26,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log("focusMode onShow");
+
     // 专注模式下，保持屏幕常亮
     wx.setKeepScreenOn({
       keepScreenOn: true
@@ -36,7 +38,9 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    // 离开专注模式，取消屏幕常亮
+    console.log("focusMode onHide");
+    
+    // 小程序进入后台，取消屏幕常亮
     wx.setKeepScreenOn({
       keepScreenOn: false
     });
@@ -46,7 +50,12 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    console.log("focusMode onUnload");
+
+    // 离开专注模式，取消屏幕常亮
+    wx.setKeepScreenOn({
+      keepScreenOn: false
+    });
   },
 
   /**

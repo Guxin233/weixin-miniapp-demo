@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/focusMode/focusMode",
     "pages/todoList/todoList",
     "pages/test/test",
     "pages/addItem/addItem",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/focusMode/focusMode"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,2 +1,13 @@
 <!--pages/focusMode/focusMode.wxml-->
 <text>这是专注模式</text>
+<!--
+<view class='circleprogress'></view>
+-->
+<div class="circleProgress_wrapper">
+  <div class="wrapper right">
+    <div class="circleProgress rightcircle"></div>
+  </div>
+  <div class="wrapper left">
+    <div class="circleProgress leftcircle"></div>
+  </div>
+</div>

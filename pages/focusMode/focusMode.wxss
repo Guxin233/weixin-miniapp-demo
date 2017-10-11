@@ -1,1 +1,64 @@
 /* pages/focusMode/focusMode.wxss */
+/*
+.circleprogress{
+    width: 160px;
+    height: 160px;
+    border:20px solid red;
+    border-radius: 50%;
+}
+*/
+.wrapper{
+    width: 100px;
+    height: 200px;
+    position: absolute;
+    top:0;
+    margin-top: 200rpx;
+    overflow: hidden;
+}
+.right{
+    text-align: center;
+    margin-left: 150rpx;
+}
+.left{
+    text-align: center;
+    margin-left: -30rpx;
+}
+
+.circleProgress{
+    width: 160px;
+    height: 160px;
+    border:20px solid transparent;
+    border-radius: 50%;
+    position: absolute;
+    top:0;
+    -webkit-transform: rotate(45deg);
+}
+
+.rightcircle{
+    border-top:20px solid green;
+    border-right:20px solid green;
+    right:0;
+    -webkit-animation: circleProgressLoad_right 5s linear 1;
+}
+.leftcircle{
+    border-bottom:20px solid green;
+    border-left:20px solid green;
+    left:0;
+    -webkit-animation: circleProgressLoad_left 5s linear 1;
+}
+@-webkit-keyframes circleProgressLoad_right{
+    0%{
+        -webkit-transform: rotate(45deg);
+    }
+    50%,100%{
+        -webkit-transform: rotate(225deg);
+    }
+}
+@-webkit-keyframes circleProgressLoad_left{
+    0%,50%{
+        -webkit-transform: rotate(45deg);
+    }
+    100%{
+        -webkit-transform: rotate(225deg);
+    }
+}
