@@ -11,6 +11,7 @@
           <view class="menu rd" bindtap="delItem" data-id="{{item.id}}">移除</view>
           <view class="menu lb" bindtap="topItem" data-id="{{item.id}}">置顶</view>
           <view class="menu og {{item.finish}}" bindtap="finishItem" data-id="{{item.id}}">完成</view>
+          <view class="menu og" bindtap="finishItem" data-id="{{item.id}}">待完</view>
         </view>
       </scroll-view>
     </block>
