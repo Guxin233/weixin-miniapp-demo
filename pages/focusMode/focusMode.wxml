@@ -20,10 +20,15 @@
 <view class='timeStr'>{{timeStr}}</view>
 
 <!-- 选择时间 -->
-<view class='timeView'>
+<view class='timeView{{timeViewShow}}'>
   <text class='timeSelector5' bindtap='click5minutes'>5</text>
   <text class='timeSelector25' bindtap='click25minutes'>25</text>
   <text class='timeSelector50' bindtap='click50minutes'>50</text>
+</view>
+
+<!-- Tips文字 -->
+<view class='tipsView{{tipsViewShow}}'>
+  <text style='font-size:40rpx;'>提示文字</text>
 </view>
 
 <!-- 开始按钮 -->
@@ -32,12 +37,13 @@
 </view>
 
 <!-- 暂停按钮 -->
-<view class='startBtnView' bindtap='pauseBtn'>
-  <text class="pauseBtn{{pauseBtnShow}}">暂停</text>
+<view class='pauseBtnView'>
+  <text class="pauseBtn{{pauseBtnShow}}" bindtap='pauseBtn'>暂停</text>
 </view>
 
-<!-- 继续按钮 -->
-<text class="continueBtn{{continueBtnShow}}" bindtap='continueBtn'>继续</text>
-
-<!-- 结束按钮 -->
-<text class="exitBtn{{exitBtnShow}}" bindtap='exitBtn'>结束</text>
+<view>
+  <!-- 继续按钮 -->
+  <text class="continueBtn{{continueBtnShow}}" bindtap='continueBtn'>继续</text>
+  <!-- 结束按钮 -->
+  <text class="exitBtn{{exitBtnShow}}" bindtap='exitBtn'>结束</text>
+</view>

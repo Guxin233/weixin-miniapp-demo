@@ -136,9 +136,12 @@
 /*
 * 时间选择
 */
-.timeView{
+.timeViewShow{
 	margin-top:300rpx;
 	flex-direction: row;
+}
+.timeViewHide{
+  display: none;
 }
 .timeSelector5{
 	margin: 40rpx;
@@ -155,6 +158,18 @@
 	margin: 40rpx;
   font-size: 40rpx;
   padding: 20rpx;
+}
+
+/*
+* 提示文字
+*/
+.tipsViewShow{
+  margin-top:300rpx;
+	flex-direction: row;
+  text-align: center;
+}
+.tipsViewHide{
+  display: none;
 }
 
 /*
@@ -176,6 +191,9 @@
 /*
 * 暂停按钮
 */
+.pauseBtnView{
+   text-align: center;
+}
 .pauseBtnShow{
   text-align: center;
   font-size: 40rpx;
@@ -206,6 +224,7 @@
   font-size: 40rpx;
   padding: 20rpx;
   margin-left: 100rpx;
+	top:300rpx;
 }
 .exitBtnHide{
   display: none;

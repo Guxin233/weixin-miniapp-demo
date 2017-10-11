@@ -10,7 +10,8 @@ Page({
   data: {
     content : "",   // 当前事项的内容
     timeStyle : "", // 控制时间进度条的样式、动画速度
-    timeStr : "",   // 显示剩余时间
+    timeStr : "",   // 剩余时间
+    tipsViewShow: "",  // 是否显示提示文字
     startBtnShow : "",  // 是否显示【开始】按钮
     pauseBtnShow: "",   // 是否显示【暂停】按钮
     continueBtnShow: "",// 是否显示【继续】按钮
@@ -47,11 +48,12 @@ Page({
     this.setData({
       content: str,
     });
-
-    // 时间进度条先不执行
+    
     this.setData({
-      timeStyle : "",
+      timeStyle: "", // 时间进度条先不执行
       timeStr : "00:00",
+      tipsViewShow : "Hide",
+      timeViewShow : "Show",
       startBtnShow : "Hide",
       pauseBtnShow : "Hide",
       continueBtnShow : "Hide",
@@ -145,9 +147,11 @@ Page({
   // 开始按钮
   startBtn: function () {
     console.log("focusMode：开始按钮");
-    // 隐藏开始按钮，显示暂停按钮
+    // 隐藏开始按钮和时间选择，显示提示文字和暂停按钮
     this.setData({
       startBtnShow: "Hide",
+      timeViewShow: "Hide",
+      tipsViewShow: "Show",
       pauseBtnShow: "Show",
     });
 

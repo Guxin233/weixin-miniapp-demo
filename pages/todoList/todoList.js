@@ -1,6 +1,7 @@
 // pages/todoList/todoList.js
 var app = getApp(); // 应用实例
 var listHelper = require("../../utils/listHelper.js");
+var defaultItem = require("../../data/defaultItem.js");
 var all = {};       // 显示的所有条目
 
 Page({
@@ -50,12 +51,7 @@ Page({
     // 默认显示的条目
     var defaultData = {
       time: 0, // 上一次更新的时间
-      list: [
-        { id: 1, content: '点击底部【+】添加新的事项' },
-        { id: 2, content: '点击事项进入专注模式' },
-        { id: 3, content: '左滑移除/置顶/完成' },
-        { id: 4, content: '我是已完成的事项', finish: 'fn' },
-      ],
+      list: defaultItem,
     };
 
     // 缓存的条目数据
