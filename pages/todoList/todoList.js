@@ -174,6 +174,13 @@ Page({
 
   // 点击Item，进入专注模式
   focusMode: function (e){
+    // 已完成的事项不能进入专注模式！
+    var item = listHelper.getItemById(all.list, e.currentTarget.dataset.id);
+    if (item.finish != null && item.finish == "fn"){
+      console.log("已完成的事项不能进入专注模式，条目Id = " + e.currentTarget.dataset.id);
+      return;
+    }
+    // 页面跳转
     console.log("todoList 跳转到 focusMode，条目Id = " + e.currentTarget.dataset.id);
     wx.navigateTo({
       url: '../focusMode/focusMode?id=' + e.currentTarget.dataset.id,
