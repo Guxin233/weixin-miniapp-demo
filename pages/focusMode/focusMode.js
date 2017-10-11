@@ -16,7 +16,6 @@ Page({
    */
   onLoad: function (options) {
     var itemId = options.id;
-    var itemId = 2;
     var list = wx.getStorageSync('list') || [];
     if(list == [] || list.length == 0)
     {
@@ -31,7 +30,7 @@ Page({
     if (typeof (item) == "undefined")
     {
       wx.showToast({
-        title: '当前事项不存在！',
+        title: '事项不存在！',
         icon: 'loading'
       })
       wx.navigateBack();

@@ -4,6 +4,7 @@
  */
 .content{
   margin: 20rpx;
+	margin-top: 100rpx;
   text-align: center;
 }
 
@@ -15,7 +16,7 @@
     height: 200px;
     position: absolute;
     top:0;
-    margin-top: 200rpx;
+    margin-top: 300rpx;
     overflow: hidden;
 }
 .right{
@@ -87,4 +88,20 @@
     100%{
         -webkit-transform: rotate(225deg);
     }
+}
+
+
+/*
+* 时间选择
+*/
+.timeView{
+	text-align:center;
+	margin-top:650rpx;
+	flex-direction: row;
+}
+
+.timeSelector{
+	width: 25%;
+	height: 5rpx;
+	margin: 100rpx;
 }

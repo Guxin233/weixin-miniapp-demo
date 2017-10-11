@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/focusMode/focusMode",
     "pages/todoList/todoList",
-    "pages/test/test",
+		"pages/focusMode/focusMode",
     "pages/addItem/addItem",
     "pages/index/index",
+    "pages/test/test",
     "pages/logs/logs"
   ],
   "window": {

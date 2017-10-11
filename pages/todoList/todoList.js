@@ -68,6 +68,11 @@ Page({
       newItem.id = data.list.length + 1;
       newItem.content = this.data.addItemContent;
       data.list.unshift(newItem);
+
+      // 清除数据
+      this.setData({
+        addItemContent:"",
+      });
     }
 
     // 读取缓存中的条目，如果不存在，就使用默认的

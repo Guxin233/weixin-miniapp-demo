@@ -16,3 +16,9 @@
   </div>
 </div>
 
+<!-- 选择时间 -->
+<view class='timeView'>
+	<block class='timeSelector'>5</block>
+	<block class='timeSelector'>15</block>
+	<block class='timeSelector'>52</block>
+</view>
