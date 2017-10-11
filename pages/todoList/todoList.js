@@ -170,6 +170,14 @@ Page({
     // 更新界面
     showList(this);
   },
+
+  // 点击Item，进入专注模式
+  focusMode: function (e){
+    console.log("todoList 跳转到 focusMode，条目Id = " + e.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: '../focusMode/focusMode?id=' + e.currentTarget.dataset.id,
+    });
+  }
 })
 
 // 刷新显示列表

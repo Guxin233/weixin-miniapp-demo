@@ -2,9 +2,10 @@
   "pages": [
     "pages/todoList/todoList",
     "pages/test/test",
-		"pages/addItem/addItem",
+    "pages/addItem/addItem",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/focusMode/focusMode"
   ],
   "window": {
     "backgroundTextStyle": "light",

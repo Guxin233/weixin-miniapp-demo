@@ -5,7 +5,7 @@
       <!-- 每一条Item都是可以横向滑动的scroll-view -->
       <scroll-view class='view-body' scroll-x="true" scroll-left="{{left}}">
         <view class="item">
-          <view class="content">
+          <view class="content" bindtap="focusMode" data-id="{{item.id}}">
             <text class="{{item.finish}}">{{item.content}}</text>
           </view>
           <view class="menu rd" bindtap="delItem" data-id="{{item.id}}">移除</view>
