@@ -1,6 +1,7 @@
 // pages/focusMode/focusMode.js
 var listHelper = require("../../utils/listHelper.js");
 var timeHelper = require("../../utils/timeHelper.js");
+var interval; // 每秒倒计时
 
 Page({
 
@@ -11,11 +12,12 @@ Page({
     content : "",   // 当前事项的内容
     timeStyle : "", // 控制时间进度条的样式、动画速度
     timeStr : "",   // 剩余时间
-    tipsViewShow: "",  // 是否显示提示文字
-    startBtnShow : "",  // 是否显示【开始】按钮
-    pauseBtnShow: "",   // 是否显示【暂停】按钮
-    continueBtnShow: "",// 是否显示【继续】按钮
-    exitBtnShow: "",    // 是否显示【结束】按钮
+    tipsViewShow : "",    // 是否显示提示文字
+    startBtnShow : "",    // 是否显示【开始】按钮
+    pauseBtnShow: "",     // 是否显示【暂停】按钮
+    continueBtnShow : "", // 是否显示【继续】按钮
+    exitBtnShow : "",     // 是否显示【结束】按钮
+    isClocking : false,   // 是否正在倒计时
   },
 
   /**
@@ -50,10 +52,11 @@ Page({
     });
     
     this.setData({
-      timeStyle: "", // 时间进度条先不执行
-      timeStr : "00:00",
-      tipsViewShow : "Hide",
-      timeViewShow : "Show",
+      timeStyle: "",      // 时间进度条先不执行
+      timeStr : "00:00",  // 剩余时间
+      tipsViewShow : "Hide",    // 提示文字
+      timeViewShow : "Show",    // 选择时间
+      timeTipViewShow : "Show", // 提示选择时间
       startBtnShow : "Hide",
       pauseBtnShow : "Hide",
       continueBtnShow : "Hide",
@@ -144,19 +147,20 @@ Page({
     selectMinutes(this, 50);
   },
 
-  // 开始按钮
-  startBtn: function () {
-    console.log("focusMode：开始按钮");
-    // 隐藏开始按钮和时间选择，显示提示文字和暂停按钮
-    this.setData({
-      startBtnShow: "Hide",
-      timeViewShow: "Hide",
-      tipsViewShow: "Show",
-      pauseBtnShow: "Show",
-    });
+    // 开始按钮
+    startBtn: function () {
+      console.log("focusMode：开始按钮");
+      // 隐藏开始按钮和时间选择，显示提示文字和暂停按钮
+      this.setData({
+        startBtnShow: "Hide",
+        timeViewShow: "Hide",
+        tipsViewShow: "Show",
+        pauseBtnShow: "Show",
+      });
 
-    // todo 开始计时
-  },
+      // todo 开始计时
+      Countdown();
+    },
 
   // 暂停按钮
   pauseBtn: function () {
@@ -196,9 +200,18 @@ function selectMinutes(currPage, e) {
   var second = e * 60; // 分 --> 秒
   var minuteSecond = timeHelper.second2minutesecond(second);
 
-  // 显示开始按钮，更新剩余时间
+  // 显示开始按钮，更新剩余时间，隐藏提示选择时间
   currPage.setData({
     startBtnShow: "Show",
     timeStr: minuteSecond,
+    timeTipViewShow: "Hide",
   });
+};
+
+// 倒计时
+function Countdown() {
+  setTimeout(function () {
+    console.log("----Countdown----");
+    Countdown();
+  }, 1000);
 };

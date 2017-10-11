@@ -173,6 +173,18 @@
 }
 
 /*
+* 提示选择时间文字
+*/
+.timeTipViewShow{
+  font-size:40rpx;
+  text-align: center;
+  margin-top: 100rpx;
+}
+.timeTipViewHide{
+  display: none;
+}
+
+/*
 * 开始按钮
 */
 .startBtnView{

@@ -33,6 +33,11 @@
   <text style='font-size:40rpx;'>提示文字</text>
 </view>
 
+<!-- 提示选择时间 -->
+<view class='timeTipView{{timeTipViewShow}}'>
+  <text>请选择时间</text>
+</view>
+
 <!-- 开始按钮 -->
 <view class='startBtnView' bindtap='startBtn'>
   <text class="startBtn{{startBtnShow}}">开始</text>
