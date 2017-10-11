@@ -7,6 +7,7 @@
 <view class='content'>{{content}}</view>
 
 <!-- 环形时间进度条 -->
+<!--
 <div class="circleProgress_wrapper">
   <div class="wrapper right">
     <div class="circleProgress rightcircle{{timeStyle}}"></div>
@@ -15,6 +16,7 @@
     <div class="circleProgress leftcircle{{timeStyle}}"></div>
   </div>
 </div>
+-->
 
 <!-- 剩余时间 -->
 <view class='timeStr'>{{timeStr}}</view>

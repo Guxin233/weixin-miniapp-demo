@@ -129,15 +129,15 @@
 */
 .timeStr{
   text-align:center;
-  margin-top: 310rpx;
-  font-size: 40rpx;
+  margin-top: 150rpx;
+  font-size: 200rpx;
 }
 
 /*
 * 时间选择
 */
 .timeViewShow{
-	margin-top:300rpx;
+	margin-top:200rpx;
 	flex-direction: row;
 }
 .timeViewHide{
@@ -164,7 +164,7 @@
 * 提示文字
 */
 .tipsViewShow{
-  margin-top:300rpx;
+  margin-top:200rpx;
 	flex-direction: row;
   text-align: center;
 }
