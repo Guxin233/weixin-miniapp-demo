@@ -9,16 +9,35 @@
 <!-- 环形时间进度条 -->
 <div class="circleProgress_wrapper">
   <div class="wrapper right">
-    <div class="circleProgress rightcircle{{minute}}"></div>
+    <div class="circleProgress rightcircle{{timeStyle}}"></div>
   </div>
   <div class="wrapper left">
-    <div class="circleProgress leftcircle{{minute}}"></div>
+    <div class="circleProgress leftcircle{{timeStyle}}"></div>
   </div>
 </div>
 
+<!-- 剩余时间 -->
+<view class='timeStr'>{{timeStr}}</view>
+
 <!-- 选择时间 -->
 <view class='timeView'>
-	<block class='timeSelector'>5</block>
-	<block class='timeSelector'>15</block>
-	<block class='timeSelector'>52</block>
+  <text class='timeSelector5' bindtap='click5minutes'>5</text>
+  <text class='timeSelector25' bindtap='click25minutes'>25</text>
+  <text class='timeSelector50' bindtap='click50minutes'>50</text>
 </view>
+
+<!-- 开始按钮 -->
+<view class='startBtnView' bindtap='startBtn'>
+  <text class="startBtn{{startBtnShow}}">开始</text>
+</view>
+
+<!-- 暂停按钮 -->
+<view class='startBtnView' bindtap='pauseBtn'>
+  <text class="pauseBtn{{pauseBtnShow}}">暂停</text>
+</view>
+
+<!-- 继续按钮 -->
+<text class="continueBtn{{continueBtnShow}}" bindtap='continueBtn'>继续</text>
+
+<!-- 结束按钮 -->
+<text class="exitBtn{{exitBtnShow}}" bindtap='exitBtn'>结束</text>

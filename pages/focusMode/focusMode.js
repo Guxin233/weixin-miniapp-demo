@@ -1,5 +1,6 @@
 // pages/focusMode/focusMode.js
 var listHelper = require("../../utils/listHelper.js");
+var timeHelper = require("../../utils/timeHelper.js");
 
 Page({
 
@@ -7,8 +8,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content:"", // 当前事项的内容
-    minute:"",  // 控制时间进度条的样式、动画速度
+    content : "",   // 当前事项的内容
+    timeStyle : "", // 控制时间进度条的样式、动画速度
+    timeStr : "",   // 显示剩余时间
+    startBtnShow : "",  // 是否显示【开始】按钮
+    pauseBtnShow: "",   // 是否显示【暂停】按钮
+    continueBtnShow: "",// 是否显示【继续】按钮
+    exitBtnShow: "",    // 是否显示【结束】按钮
   },
 
   /**
@@ -44,8 +50,14 @@ Page({
 
     // 时间进度条先不执行
     this.setData({
-      minute: "",
+      timeStyle : "",
+      timeStr : "00:00",
+      startBtnShow : "Hide",
+      pauseBtnShow : "Hide",
+      continueBtnShow : "Hide",
+      exitBtnShow: "Hide",
     });
+
   },
 
   /**
@@ -110,5 +122,79 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
-})
+  },
+
+  // 选择5分钟
+  click5minutes: function () {
+    console.log("focusMode：选择5分钟");
+    selectMinutes(this, 5);
+  },
+
+  // 选择25分钟
+  click25minutes: function () {
+    console.log("focusMode：选择25分钟");
+    selectMinutes(this, 25);
+  },
+
+  // 选择50分钟
+  click50minutes: function () {
+    console.log("focusMode：选择50分钟");
+    selectMinutes(this, 50);
+  },
+
+  // 开始按钮
+  startBtn: function () {
+    console.log("focusMode：开始按钮");
+    // 隐藏开始按钮，显示暂停按钮
+    this.setData({
+      startBtnShow: "Hide",
+      pauseBtnShow: "Show",
+    });
+
+    // todo 开始计时
+  },
+
+  // 暂停按钮
+  pauseBtn: function () {
+    console.log("focusMode：暂停按钮");
+    // 隐藏暂停按钮，显示继续和结束按钮
+    this.setData({
+      pauseBtnShow: "Hide",
+      continueBtnShow: "Show",
+      exitBtnShow: "Show",
+    });
+
+    // todo 暂停计时
+  },
+
+  // 继续按钮
+  continueBtn: function () {
+    console.log("focusMode：继续按钮");
+    // 显示暂停按钮，隐藏继续和结束按钮
+    this.setData({
+      pauseBtnShow: "Show",
+      continueBtnShow: "Hide",
+      exitBtnShow: "Hide",
+    });
+
+    // todo 继续计时
+  },
+
+  // 结束按钮
+  exitBtn: function () {
+    console.log("focusMode：结束按钮");
+  },
+
+});
+
+// 选择时间
+function selectMinutes(currPage, e) {
+  var second = e * 60; // 分 --> 秒
+  var minuteSecond = timeHelper.second2minutesecond(second);
+
+  // 显示开始按钮，更新剩余时间
+  currPage.setData({
+    startBtnShow: "Show",
+    timeStr: minuteSecond,
+  });
+};

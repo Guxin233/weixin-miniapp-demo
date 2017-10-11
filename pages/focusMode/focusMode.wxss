@@ -68,7 +68,41 @@
     animation-fill-mode : forwards;
 }
 
+/*
+* 25分钟的动画速度
+*/
+.rightcircle25{
+    border-top:20px solid #0094ff;
+    border-right:20px solid #0094ff;
+    right:0;
+    -webkit-animation: circleProgressLoad_right 25s linear 1;
+    animation-fill-mode : forwards;
+}
+.leftcircle25{
+    border-bottom:20px solid #0094ff;
+    border-left:20px solid #0094ff;
+    left:0;
+    -webkit-animation: circleProgressLoad_left 25s linear 1;
+    animation-fill-mode : forwards;
+}
 
+/*
+* 50分钟的动画速度
+*/
+.rightcircle50{
+    border-top:20px solid #0094ff;
+    border-right:20px solid #0094ff;
+    right:0;
+    -webkit-animation: circleProgressLoad_right 50s linear 1;
+    animation-fill-mode : forwards;
+}
+.leftcircle50{
+    border-bottom:20px solid #0094ff;
+    border-left:20px solid #0094ff;
+    left:0;
+    -webkit-animation: circleProgressLoad_left 50s linear 1;
+    animation-fill-mode : forwards;
+}
 
 /*
  * 环形时间进度条的帧动画
@@ -90,18 +124,89 @@
     }
 }
 
+/*
+* 显示剩余时间
+*/
+.timeStr{
+  text-align:center;
+  margin-top: 310rpx;
+  font-size: 40rpx;
+}
 
 /*
 * 时间选择
 */
 .timeView{
-	text-align:center;
-	margin-top:650rpx;
+	margin-top:300rpx;
 	flex-direction: row;
 }
+.timeSelector5{
+	margin: 40rpx;
+	margin-left: 190rpx;
+  font-size: 40rpx;
+  padding: 20rpx;
+}
+.timeSelector25{
+	margin: 40rpx;
+  font-size: 40rpx;
+  padding: 20rpx;
+}
+.timeSelector50{
+	margin: 40rpx;
+  font-size: 40rpx;
+  padding: 20rpx;
+}
 
-.timeSelector{
-	width: 25%;
-	height: 5rpx;
-	margin: 100rpx;
+/*
+* 开始按钮
+*/
+.startBtnView{
+   text-align: center;
+   margin-top: 100rpx;
+}
+.startBtnShow{
+  text-align: center;
+  font-size: 40rpx;
+  padding: 20rpx;
+}
+.startBtnHide{
+  display: none;
+}
+
+/*
+* 暂停按钮
+*/
+.pauseBtnShow{
+  text-align: center;
+  font-size: 40rpx;
+  padding: 20rpx;
+}
+.pauseBtnHide{
+  display: none;
+}
+
+/*
+* 继续按钮
+*/
+.continueBtnShow{
+  text-align: center;
+  font-size: 40rpx;
+  padding: 20rpx;
+  margin-left: 210rpx;
+}
+.continueBtnHide{
+  display: none;
+}
+
+/*
+* 结束按钮
+*/
+.exitBtnShow{
+  text-align: center;
+  font-size: 40rpx;
+  padding: 20rpx;
+  margin-left: 100rpx;
+}
+.exitBtnHide{
+  display: none;
 }
