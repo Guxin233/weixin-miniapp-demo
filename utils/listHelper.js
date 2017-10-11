@@ -2,7 +2,19 @@
  * list列表帮助类
  */
 
-// 根据Id删除条目
+// 获得指定arr列表中指定Id的条目
+function getItemById(arr, id)
+{
+  var item;
+  for (var i = 0; i < arr.length; i++) {
+    if (id == arr[i].id) {
+      item = arr[i];
+    }
+  }
+  return item; 
+}
+
+// 根据Id，删除条目
 function delItemById(arr, id){
   var temp = [];
   for (var i = 0; i < arr.length; i++) {
@@ -13,7 +25,7 @@ function delItemById(arr, id){
   return temp;
 };
 
-// 根据Id置顶条目
+// 根据Id，置顶条目
 function topItemById(arr, id){
   var temp = [];
   for (var i = 0; i < arr.length; i++) {
@@ -29,7 +41,7 @@ function topItemById(arr, id){
   return temp;
 };
 
-// 根据Id修改条目为已完成状态
+// 根据Id，修改条目状态为待办或完成
 function finishItemById(arr, id){
   var temp = [];
   var tempdata = [];
@@ -52,6 +64,7 @@ function finishItemById(arr, id){
 };
 
 module.exports = {
+  getItemById: getItemById,
   delItemById: delItemById,
   topItemById: topItemById,
   finishItemById: finishItemById,

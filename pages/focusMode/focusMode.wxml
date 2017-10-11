@@ -1,13 +1,18 @@
 <!--pages/focusMode/focusMode.wxml-->
-<text>这是专注模式</text>
 <!--
 <view class='circleprogress'></view>
 -->
+
+<!-- 事项内容 -->
+<view class='content'>{{content}}</view>
+
+<!-- 环形时间进度条 -->
 <div class="circleProgress_wrapper">
   <div class="wrapper right">
-    <div class="circleProgress rightcircle"></div>
+    <div class="circleProgress rightcircle{{minute}}"></div>
   </div>
   <div class="wrapper left">
-    <div class="circleProgress leftcircle"></div>
+    <div class="circleProgress leftcircle{{minute}}"></div>
   </div>
 </div>
+

@@ -1,12 +1,15 @@
 /* pages/focusMode/focusMode.wxss */
 /*
-.circleprogress{
-    width: 160px;
-    height: 160px;
-    border:20px solid red;
-    border-radius: 50%;
+ * 当前事项的内容
+ */
+.content{
+  margin: 20rpx;
+  text-align: center;
 }
-*/
+
+/*
+ * 环形时间进度条
+ */
 .wrapper{
     width: 100px;
     height: 200px;
@@ -16,12 +19,10 @@
     overflow: hidden;
 }
 .right{
-    text-align: center;
-    margin-left: 150rpx;
+    margin-left: 375rpx;
 }
 .left{
-    text-align: center;
-    margin-left: -30rpx;
+    margin-left: 195rpx;
 }
 
 .circleProgress{
@@ -34,18 +35,43 @@
     -webkit-transform: rotate(45deg);
 }
 
+/*
+* 不执行动画
+*/
 .rightcircle{
-    border-top:20px solid green;
-    border-right:20px solid green;
+    border-top:20px solid #0094ff;
+    border-right:20px solid #0094ff;
     right:0;
-    -webkit-animation: circleProgressLoad_right 5s linear 1;
 }
 .leftcircle{
-    border-bottom:20px solid green;
-    border-left:20px solid green;
+    border-bottom:20px solid #0094ff;
+    border-left:20px solid #0094ff;
+    left:0;
+}
+
+/*
+* 5分钟的动画速度
+*/
+.rightcircle5{
+    border-top:20px solid #0094ff;
+    border-right:20px solid #0094ff;
+    right:0;
+    -webkit-animation: circleProgressLoad_right 5s linear 1;
+    animation-fill-mode : forwards;
+}
+.leftcircle5{
+    border-bottom:20px solid #0094ff;
+    border-left:20px solid #0094ff;
     left:0;
     -webkit-animation: circleProgressLoad_left 5s linear 1;
+    animation-fill-mode : forwards;
 }
+
+
+
+/*
+ * 环形时间进度条的帧动画
+ */
 @-webkit-keyframes circleProgressLoad_right{
     0%{
         -webkit-transform: rotate(45deg);

@@ -1,18 +1,52 @@
 // pages/focusMode/focusMode.js
+var listHelper = require("../../utils/listHelper.js");
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    content:"", // 当前事项的内容
+    minute:"",  // 控制时间进度条的样式、动画速度
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var itemId = options.id;
+    var itemId = 2;
+    var list = wx.getStorageSync('list') || [];
+    if(list == [] || list.length == 0)
+    {
+      wx.showToast({
+        title: '事项不存在！',
+        icon: 'loading'
+      })
+      wx.navigateBack();
+    };
+
+    var item = listHelper.getItemById(list.list, itemId);
+    if (typeof (item) == "undefined")
+    {
+      wx.showToast({
+        title: '当前事项不存在！',
+        icon: 'loading'
+      })
+      wx.navigateBack();
+    };
+
+    // 显示当前事项的内容
+    var str = item.content;
+    this.setData({
+      content: str,
+    });
+
+    // 时间进度条先不执行
+    this.setData({
+      minute: "",
+    });
   },
 
   /**
