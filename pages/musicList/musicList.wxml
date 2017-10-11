@@ -1,4 +1,0 @@
-<!--pages/musicList/musicList.wxml-->
-<view>
-	<button type="primary" class='refresh-Btn' bindtap="refreshMusicList">扫描本地音乐</button>
-</view>
