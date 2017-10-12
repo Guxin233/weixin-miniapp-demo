@@ -6,6 +6,7 @@
   margin: 20rpx;
 	margin-top: 100rpx;
   text-align: center;
+  font-size: 40rpx;
 }
 
 /*
@@ -129,7 +130,7 @@
 */
 .timeStr{
   text-align:center;
-  margin-top: 150rpx;
+  margin-top: 200rpx;
   font-size: 200rpx;
 }
 

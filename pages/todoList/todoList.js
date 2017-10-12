@@ -57,6 +57,9 @@ Page({
 
     // 缓存的条目数据
     var data = wx.getStorageSync('list') || defaultData;
+    if (data.list == null){
+      data = defaultData;
+    }
 
     // 是否需要添加条目Item
     if (this.data.addItemContent.length != 0) {
@@ -78,10 +81,6 @@ Page({
       console.log("todoList：完成事项");
       var temp = listHelper.finishItemById(all.list, this.data.finishItemId);
       data.list = temp;
-      // 更新缓存数据
-      //updateStorageData();
-      // 更新界面
-      //showList(this);
 
       // 清除数据
       this.setData({

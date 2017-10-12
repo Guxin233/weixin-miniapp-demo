@@ -56,7 +56,7 @@ function finishItemById(arr, id){
     }
 
     // 统计未完成的条目数
-    if (item.finish != null && item.finish == 'fn')
+    if (item.finish == null || item.finish == undefined)
     {
       count++;
     }
@@ -68,7 +68,7 @@ function finishItemById(arr, id){
   } else {
     tempdata.finish = 'fn';
     //temp.push(tempdata); // 加到未完成列表的末尾，而不是整个列表的末尾
-    temp.splice(count, 0, tempdata);
+    temp.splice(count - 1, 0, tempdata);
   }
 
   return temp;
