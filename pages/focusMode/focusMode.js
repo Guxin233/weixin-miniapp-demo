@@ -2,6 +2,7 @@
 var listHelper = require("../../utils/listHelper.js");
 var timeHelper = require("../../utils/timeHelper.js");
 var interval; // 每秒倒计时
+var currPage; 
 
 Page({
 
@@ -51,6 +52,8 @@ Page({
       content: str,
     });
     
+    // 初始化数据层
+    currPage = this;
     this.setData({
       timeStyle: "",      // 时间进度条先不执行
       timeStr : "00:00",  // 剩余时间
@@ -197,8 +200,8 @@ Page({
 
 // 选择时间
 function selectMinutes(currPage, e) {
-  var second = e * 60; // 分 --> 秒
-  var minuteSecond = timeHelper.second2minutesecond(second);
+  var seconds = e * 60; // 分 --> 秒
+  var minuteSecond = timeHelper.second2MinuteSecond(seconds);
 
   // 显示开始按钮，更新剩余时间，隐藏提示选择时间
   currPage.setData({
@@ -212,6 +215,19 @@ function selectMinutes(currPage, e) {
 function Countdown() {
   setTimeout(function () {
     console.log("----Countdown----");
-    Countdown();
+    // 当前剩余时间
+    var minuteStr = currPage.data.timeStr.split(':')[0];
+    var secondStr = currPage.data.timeStr.split(':')[1];
+    // 时间字符 --> 秒数
+    var seconds = Number(minuteStr) * 60 + Number(secondStr);
+    if (seconds > 0) 
+    {
+      seconds--;
+      var minuteSecond = timeHelper.second2MinuteSecond(seconds);
+      currPage.setData({
+        timeStr: minuteSecond,
+      });
+      Countdown();
+    }
   }, 1000);
 };

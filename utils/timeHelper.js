@@ -1,5 +1,5 @@
 // 秒数 --> 分：秒
-function second2minutesecond(seconds) {
+function second2MinuteSecond(seconds) {
   return [
     parseInt(seconds / 60 % 60),
     parseInt(seconds % 60)
@@ -9,5 +9,5 @@ function second2minutesecond(seconds) {
 }
 
 module.exports = {
-  second2minutesecond: second2minutesecond,
+  second2MinuteSecond: second2MinuteSecond,
 }
