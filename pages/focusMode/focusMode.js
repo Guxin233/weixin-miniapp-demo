@@ -1,9 +1,12 @@
 // pages/focusMode/focusMode.js
 var listHelper = require("../../utils/listHelper.js");
 var timeHelper = require("../../utils/timeHelper.js");
-var interval; // 每秒倒计时
 var currPage; 
-var timer;    // 计时器
+var timer; // 计时器
+var tipsInterval = 15; // 默认每15s切换一次鼓励标语
+var tipsDelTime = 0;
+var tips = require("../../data/tips.js"); // 包含所有元素
+var tipId; // 当前显示的鼓励标语的角标
 
 Page({
 
@@ -14,7 +17,8 @@ Page({
     content : "",   // 当前事项的内容
     timeStyle : "", // 控制时间进度条的样式、动画速度
     timeStr : "",   // 剩余时间
-    tipsViewShow : "",    // 是否显示提示文字
+    tipsViewShow: "",     // 是否显示鼓励标语
+    tipsContent: "",      // 鼓励标语的内容
     startBtnShow : "",    // 是否显示【开始】按钮
     pauseBtnShow: "",     // 是否显示【暂停】按钮
     continueBtnShow : "", // 是否显示【继续】按钮
@@ -52,21 +56,24 @@ Page({
     this.setData({
       content: str,
     });
-    
-    // 初始化数据层
+
+    // 随机第一条鼓励标语的角标
+    var str = GetRandomTipContent();
+
+    // 初始化其他数据层
     currPage = this;
     this.setData({
       timeStyle: "",      // 时间进度条先不执行
       timeStr : "00:00",  // 剩余时间
-      tipsViewShow : "Hide",    // 提示文字
+      tipsViewShow: "Hide",     // 不显示鼓励标语
       timeViewShow : "Show",    // 选择时间
       timeTipViewShow : "Show", // 提示选择时间
       startBtnShow : "Hide",
       pauseBtnShow : "Hide",
       continueBtnShow : "Hide",
-      exitBtnShow: "Hide",
+      exitBtnShow : "Hide",
+      tipsContent: str,
     });
-
   },
 
   /**
@@ -154,7 +161,7 @@ Page({
     // 开始按钮
     startBtn: function () {
       console.log("focusMode：开始按钮");
-      // 隐藏开始按钮和时间选择，显示提示文字和暂停按钮
+      // 隐藏开始按钮和时间选择，显示鼓励标语和暂停按钮
       this.setData({
         startBtnShow: "Hide",
         timeViewShow: "Hide",
@@ -225,12 +232,44 @@ function Countdown() {
     var seconds = Number(minuteStr) * 60 + Number(secondStr);
     if (seconds > 0) 
     {
+      // 更新剩余时间
       seconds--;
       var minuteSecond = timeHelper.second2MinuteSecond(seconds);
       currPage.setData({
         timeStr: minuteSecond,
       });
+
+      // 更新鼓励标语
+      tipsDelTime++;
+      if (tipsDelTime >= tipsInterval)
+      {
+        tipsDelTime = 0;
+        var str = GetRandomTipContent();
+        
+        currPage.setData({
+          timeStr: minuteSecond,
+          tipsContent: str,
+        });
+      };     
+
+      // 每秒递归调用
       Countdown();
     }
   }, 1000);
+};
+
+// min <= 随机数 <= max，要求得到的与上一次的数字不相同
+function GetRandomTipContent(){
+  var list = tips;
+  list = listHelper.delItemById(list, tipId);
+  
+  var range = list.length;
+  var random = Math.random();
+  var index = Math.floor(random * range); // 舍去
+  var currItem = list[index]; // 本次抽中的鼓励标语Item
+  var str = currItem.content;
+  tipId = currItem.id;
+  console.log("鼓励标语 tipId = " + tipId);
+
+  return str;
 };

@@ -30,7 +30,7 @@
 
 <!-- Tips文字 -->
 <view class='tipsView{{tipsViewShow}}'>
-  <text style='font-size:40rpx;'>提示文字</text>
+  <text style='font-size:40rpx;'>{{tipsContent}}</text>
 </view>
 
 <!-- 提示选择时间 -->
