@@ -10,7 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-		addItemContent : '',
+		addItemContent : '', // 本次添加的事项的内容
+    finishItemId : -1, // 本次完成的事项的Id
     userInfo: {},
     list: {},
     left: 0,
@@ -20,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		console.log("todoList onLoad");
+    console.log("todoList：onLoad");
     this.setData({
 
     });
@@ -46,7 +47,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-		console.log("todoList onShow");
+    console.log("todoList：onShow");
     
     // 默认显示的条目
     var defaultData = {
@@ -59,7 +60,7 @@ Page({
 
     // 是否需要添加条目Item
     if (this.data.addItemContent.length != 0) {
-      console.log("添加Item");
+      console.log("todoList：添加事项");
       var newItem = new Object();
       newItem.id = data.list.length + 1;
       newItem.content = this.data.addItemContent;
@@ -67,7 +68,24 @@ Page({
 
       // 清除数据
       this.setData({
-        addItemContent:"",
+        addItemContent : "",
+      });
+    }
+
+    // 是否需要完成条目
+    if (this.data.finishItemId != null && this.data.finishItemId > -1)
+    {
+      console.log("todoList：完成事项");
+      var temp = listHelper.finishItemById(all.list, this.data.finishItemId);
+      data.list = temp;
+      // 更新缓存数据
+      //updateStorageData();
+      // 更新界面
+      //showList(this);
+
+      // 清除数据
+      this.setData({
+        finishItemId : -1,
       });
     }
 
@@ -136,7 +154,7 @@ Page({
 
   // 跳转到添加事项
   addItem: function() {
-    console.log("todoList 跳转到 addItem");
+    console.log("todoList：跳转到 addItem");
     wx.navigateTo({
       url: '../addItem/addItem',
     });
@@ -177,11 +195,11 @@ Page({
     // 已完成的事项不能进入专注模式！
     var item = listHelper.getItemById(all.list, e.currentTarget.dataset.id);
     if (item.finish != null && item.finish == "fn"){
-      console.log("已完成的事项不能进入专注模式，条目Id = " + e.currentTarget.dataset.id);
+      console.log("todoList：已完成的事项不能进入专注模式，条目Id = " + e.currentTarget.dataset.id);
       return;
     }
     // 页面跳转
-    console.log("todoList 跳转到 focusMode，条目Id = " + e.currentTarget.dataset.id);
+    console.log("todoList：跳转到 focusMode，条目Id = " + e.currentTarget.dataset.id);
     wx.navigateTo({
       url: '../focusMode/focusMode?id=' + e.currentTarget.dataset.id,
     });
@@ -190,7 +208,7 @@ Page({
 
 // 刷新显示列表
 function showList(currPage) {
-  console.log("刷新事项列表");
+  console.log("todoList：刷新事项列表");
   var arr = all.list;
   // 暂时不做任何筛选
   currPage.setData({
@@ -201,7 +219,7 @@ function showList(currPage) {
 
 // 更新缓存中的数据
 function updateStorageData(){
-  console.log("更新缓存中的数据");
+  console.log("todoList：更新缓存中的数据");
   try {
     all.time = parseInt((new Date()).valueOf() / 1000);
     wx.setStorageSync('list', all);

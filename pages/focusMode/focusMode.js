@@ -2,7 +2,8 @@
 var listHelper = require("../../utils/listHelper.js");
 var timeHelper = require("../../utils/timeHelper.js");
 var currPage; 
-var timer; // 计时器
+var itemId; // 当前的事项Id
+var timer;  // 计时器
 var tipsInterval = 15; // 默认每15s切换一次鼓励标语
 var tipsDelTime = 0;
 var tips = require("../../data/tips.js"); // 包含所有元素
@@ -30,7 +31,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var itemId = options.id;
+    itemId = options.id;
     var list = wx.getStorageSync('list') || [];
     if(list == [] || list.length == 0)
     {
@@ -169,7 +170,7 @@ Page({
         pauseBtnShow: "Show",
       });
 
-      // todo 开始计时
+      // 开始计时
       Countdown();
     },
 
@@ -205,6 +206,34 @@ Page({
   exitBtn: function () {
     console.log("focusMode：结束按钮");
     clearTimeout(timer);  
+
+    // 弹窗
+    wx.showModal({
+      content: '事项完成了吗？',
+      cancelText: "要放弃",
+      confirmText: "已完成",
+      success: function (res) {
+        if (res.confirm) {
+          console.log('focusMode：已完成');
+          wx.navigateBack();
+
+          // 往上一级页面（主界面）传参
+          var pages = getCurrentPages();
+          var currPage = pages[pages.length - 1]; // 当前页面
+          var prevPage = pages[pages.length - 2]; // 上一级页面
+ 
+          // 直接调用上一级页面Page对象，存储数据到上一级页面中
+          prevPage.setData({
+            'finishItemId': itemId,
+          });
+
+        } else if (res.cancel) {
+          console.log('focusMode：要放弃');
+          // 直接回到主界面
+          wx.navigateBack();
+        }
+      }
+    })
   },
 
 });
@@ -255,6 +284,11 @@ function Countdown() {
       // 每秒递归调用
       Countdown();
     }
+    else // todo 剩余时间已经结束
+    { 
+
+    }
+
   }, 1000);
 };
 
@@ -269,7 +303,7 @@ function GetRandomTipContent(){
   var currItem = list[index]; // 本次抽中的鼓励标语Item
   var str = currItem.content;
   tipId = currItem.id;
-  console.log("鼓励标语 tipId = " + tipId);
+  console.log("鼓励标语 id = " + tipId);
 
   return str;
 };
