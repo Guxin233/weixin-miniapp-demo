@@ -3,6 +3,7 @@ var listHelper = require("../../utils/listHelper.js");
 var timeHelper = require("../../utils/timeHelper.js");
 var interval; // 每秒倒计时
 var currPage; 
+var timer;    // 计时器
 
 Page({
 
@@ -175,7 +176,8 @@ Page({
       exitBtnShow: "Show",
     });
 
-    // todo 暂停计时
+    // 暂停计时
+    clearTimeout(timer);
   },
 
   // 继续按钮
@@ -188,12 +190,14 @@ Page({
       exitBtnShow: "Hide",
     });
 
-    // todo 继续计时
+    // 继续计时
+    Countdown();
   },
 
   // 结束按钮
   exitBtn: function () {
     console.log("focusMode：结束按钮");
+    clearTimeout(timer);  
   },
 
 });
@@ -213,8 +217,7 @@ function selectMinutes(currPage, e) {
 
 // 倒计时
 function Countdown() {
-  setTimeout(function () {
-    console.log("----Countdown----");
+  timer = setTimeout(function () {
     // 当前剩余时间
     var minuteStr = currPage.data.timeStr.split(':')[0];
     var secondStr = currPage.data.timeStr.split(':')[1];
