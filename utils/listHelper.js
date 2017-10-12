@@ -43,21 +43,32 @@ function topItemById(arr, id){
 
 // 根据Id，修改条目状态为待办或完成
 function finishItemById(arr, id){
-  var temp = [];
-  var tempdata = [];
+  var temp = [];     // 存放除了目标Item外所有其他Item
+  var tempdata = []; // 只存放目标Item
+  var count = 0;     // 待完成的条目数
+
   for (var i = 0; i < arr.length; i++) {
-    if (id != arr[i].id) {
-      temp.push(arr[i]);
+    var item = arr[i];
+    if (id != item.id) {
+      temp.push(item);
     } else {
-      tempdata = arr[i];
+      tempdata = item;
+    }
+
+    // 统计未完成的条目数
+    if (item.finish != null && item.finish == 'fn')
+    {
+      count++;
     }
   }
+
   if (tempdata.finish == 'fn') {
     tempdata.finish = null;
     temp.unshift(tempdata);
   } else {
     tempdata.finish = 'fn';
-    temp.push(tempdata);
+    //temp.push(tempdata); // 加到未完成列表的末尾，而不是整个列表的末尾
+    temp.splice(count, 0, tempdata);
   }
 
   return temp;
