@@ -144,7 +144,7 @@ Page({
   // 选择5分钟
   click5minutes: function () {
     console.log("focusMode：选择5分钟");
-    selectMinutes(this, 0.05);
+    selectMinutes(this, 5);
   },
 
   // 选择25分钟
