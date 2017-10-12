@@ -144,7 +144,7 @@ Page({
   // 选择5分钟
   click5minutes: function () {
     console.log("focusMode：选择5分钟");
-    selectMinutes(this, 5);
+    selectMinutes(this, 0.05);
   },
 
   // 选择25分钟
@@ -214,7 +214,7 @@ Page({
       confirmText: "已完成",
       success: function (res) {
         if (res.confirm) {
-          console.log('focusMode：已完成');
+          console.log('focusMode：提前完成');
           wx.navigateBack();
 
           // 往上一级页面（主界面）传参
@@ -284,9 +284,48 @@ function Countdown() {
       // 每秒递归调用
       Countdown();
     }
-    else // todo 剩余时间已经结束
+    else // 剩余时间已经结束
     { 
+      wx.showModal({
+        title: '时间结束',
+        content: '是否完成了事项？',
+        cancelText: "继续",
+        confirmText: "完成",
+        success: function (res) {
+          if (res.confirm) {
+            console.log('focusMode：计时结束，已完成');
+            wx.navigateBack();
 
+            // 往上一级页面（主界面）传参
+            var pages = getCurrentPages();
+            //var currPage = pages[pages.length - 1]; // 当前页面
+            var prevPage = pages[pages.length - 2]; // 上一级页面
+
+            // 直接调用上一级页面Page对象，存储数据到上一级页面中
+            prevPage.setData({
+              'finishItemId': itemId,
+            });
+          } 
+          else if (res.cancel) 
+          {
+            console.log('focusMode：计时结束，未完成');
+            console.log(currPage);
+            // 回到重新选择时间的状态
+            currPage.setData({
+              timeStyle: "",      // 时间进度条先不执行
+              timeStr: "00:00",   // 剩余时间
+              tipsViewShow: "Hide",    // 不显示鼓励标语
+              timeViewShow: "Show",    // 选择时间
+              timeTipViewShow: "Show", // 提示选择时间
+              startBtnShow: "Hide",
+              pauseBtnShow: "Hide",
+              continueBtnShow: "Hide",
+              exitBtnShow: "Hide",
+              tipsContent: str,
+            });
+          }
+        }
+      });
     }
 
   }, 1000);
