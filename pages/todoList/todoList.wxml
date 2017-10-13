@@ -5,17 +5,19 @@
 		<view class="list">
 			<block wx:for="{{list}}" wx:for-item="item" wx:key="id">
 				<!-- 每一条Item都是可以横向滑动的scroll-view -->
-				<scroll-view class='view-body' scroll-x="true" scroll-left="{{left}}">
+				<!--<scroll-view class='view-body' scroll-x="true" scroll-left="{{left}}">-->
 					<view class="item">
 						<view class="content" bindtap="popupMenu" data-statu="open" data-id="{{item.id}}">
 							<text class="{{item.finish}}">{{item.content}}</text>
 						</view>
+						<!--
 						<view class="menu rd" bindtap="delItem" data-id="{{item.id}}">移除</view>
 						<view class="menu lb" bindtap="topItem" data-id="{{item.id}}">置顶</view>
 						<view class="menu og {{item.finish}}" bindtap="finishItem" data-id="{{item.id}}">完成</view>
 						<view class="menu og" bindtap="finishItem" data-id="{{item.id}}">待完</view>
+						-->
 					</view>
-				</scroll-view>
+				<!--</scroll-view>-->
 			</block>
 		</view>
 
@@ -33,11 +35,11 @@
 			<!--drawer content-->
 			<view class="drawer_content"> 
 				<view class="button-sp-area">
-					<button class="weui-btn" type="primary">完成</button>
-					<button class="weui-btn" type="default" plain="true">上移</button>
-					<button class="weui-btn" type="default" plain="true">进入专注模式</button>
-					<button class="weui-btn" type="default" plain="true">下移</button>
-					<button class="weui-btn" type="warn">删除</button>
+					<button class="weui-btn" type="default" bindtap='moveUp'>上移</button>
+					<button class="weui-btn" type="default" bindtap='focusMode'>进入专注模式</button>
+					<button class="weui-btn" type="default" bindtap='moveDown'>下移</button>
+					<button class="weui-btn" type="primary" bindtap='finishItem'>完成</button>
+					<button class="weui-btn" type="warn" bindtap='moveUp'>删除</button>
 				</view>
 			</view> 
 		</view> 

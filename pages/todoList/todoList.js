@@ -49,6 +49,9 @@ Page({
   onShow: function () {
     console.log("todoList：onShow");
     
+		// test：清空本地数据
+		//wx.clearStorageSync();
+
     // 默认显示的条目
     var defaultData = {
       time: 0, // 上一次更新的时间
@@ -190,9 +193,8 @@ Page({
   },
 
   // 点击Item，进入专注模式
+	/*
   focusMode: function (e){
-
-		return;
     // 已完成的事项不能进入专注模式！
     var item = listHelper.getItemById(all.list, e.currentTarget.dataset.id);
     if (item.finish != null && item.finish == "fn"){
@@ -205,7 +207,9 @@ Page({
       url: '../focusMode/focusMode?id=' + e.currentTarget.dataset.id,
     });
   },
+	*/
 
+  // 点击Item，弹出操作菜单
 	popupMenu: function (e) {
 		var currentStatu = e.currentTarget.dataset.statu;
 		this.util(currentStatu)

@@ -103,6 +103,7 @@
  overflow-y: scroll; /*超出父盒子高度可滚动*/ 
  text-align: center;
  padding: 10rpx;
+ background: #808080;
 } 
  
 .btn_ok{ 
