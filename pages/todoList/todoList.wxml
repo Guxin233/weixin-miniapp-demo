@@ -1,31 +1,45 @@
 <!--pages/todoList/todoList.wxml-->
-<view class="container">
-  <view class="list">
-    <block wx:for="{{list}}" wx:for-item="item" wx:key="id">
-      <!-- 每一条Item都是可以横向滑动的scroll-view -->
-      <scroll-view class='view-body' scroll-x="true" scroll-left="{{left}}">
-        <view class="item">
-          <view class="content" bindtap="focusMode" data-id="{{item.id}}">
-            <text class="{{item.finish}}">{{item.content}}</text>
-          </view>
-          <view class="menu rd" bindtap="delItem" data-id="{{item.id}}">移除</view>
-          <view class="menu lb" bindtap="topItem" data-id="{{item.id}}">置顶</view>
-          <view class="menu og {{item.finish}}" bindtap="finishItem" data-id="{{item.id}}">完成</view>
-          <view class="menu og" bindtap="finishItem" data-id="{{item.id}}">待完</view>
-        </view>
-      </scroll-view>
-    </block>
-  </view>
+<view class="page">
+	<view class='page__hd'>
+		<!-- listview -->
+		<view class="list">
+			<block wx:for="{{list}}" wx:for-item="item" wx:key="id">
+				<!-- 每一条Item都是可以横向滑动的scroll-view -->
+				<scroll-view class='view-body' scroll-x="true" scroll-left="{{left}}">
+					<view class="item">
+						<view class="content" bindtap="popupMenu" data-statu="open" data-id="{{item.id}}">
+							<text class="{{item.finish}}">{{item.content}}</text>
+						</view>
+						<view class="menu rd" bindtap="delItem" data-id="{{item.id}}">移除</view>
+						<view class="menu lb" bindtap="topItem" data-id="{{item.id}}">置顶</view>
+						<view class="menu og {{item.finish}}" bindtap="finishItem" data-id="{{item.id}}">完成</view>
+						<view class="menu og" bindtap="finishItem" data-id="{{item.id}}">待完</view>
+					</view>
+				</scroll-view>
+			</block>
+		</view>
 
-  <!--
-  <view class='bottom'>
+		<!-- 添加事项 -->
+		<view class='addItemView' bindtap="addItem">
+			<image class="addItemImage" src="../../images/add.png" mode="aspectFit"/>  
+		</view>
 
-  </view>
- 
- style="color:#0094ff;font-size:24px"
-  -->
-  <view class='addItemView' bindtap="addItem">
-    <image class="addItemImage" src="../../images/add.png" mode="aspectFit"/>  
-  </view>
-
+		<!-- 操作菜单 -->
+		<!--mask--> 
+		<view class="drawer_screen" bindtap="popupMenu" data-statu="close" wx:if="{{showModalStatus}}"></view> 
+		<!--content--> 
+		<!--使用animation属性指定需要执行的动画--> 
+		<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}"> 
+			<!--drawer content-->
+			<view class="drawer_content"> 
+				<view class="button-sp-area">
+					<button class="weui-btn" type="primary">完成</button>
+					<button class="weui-btn" type="default" plain="true">上移</button>
+					<button class="weui-btn" type="default" plain="true">进入专注模式</button>
+					<button class="weui-btn" type="default" plain="true">下移</button>
+					<button class="weui-btn" type="warn">删除</button>
+				</view>
+			</view> 
+		</view> 
+	</view>
 </view>

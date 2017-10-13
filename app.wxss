@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import 'weui.wxss';  
+
 /*
 .container {
   height: 100%;
@@ -9,6 +11,7 @@
   box-sizing: border-box;
 } 
 */
+
 .container {
   height: 100%;
   display: flex;
