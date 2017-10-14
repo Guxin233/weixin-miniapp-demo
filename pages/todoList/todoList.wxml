@@ -27,8 +27,8 @@
 		</view>
 
 		<!-- 删除所有已完成的事项 -->
-		<view class='delAllFinishedItem'>
-			<image src="../../images/add.png" mode="aspectFit"/>
+		<view class='delAllFinishedItem' bindtap="delAllFinishedItem">
+			<image class='delAllFinishedItem' src="../../images/remove.png" mode="aspectFit"/>
 		</view>
 
 		<!-- 操作菜单 -->

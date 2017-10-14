@@ -54,7 +54,7 @@ Page({
     console.log("todoList：onShow");
 
 		// ----test：清空本地数据
-		wx.clearStorageSync();
+		//wx.clearStorageSync();
 
     // 默认显示的条目
     var defaultData = {
@@ -160,14 +160,14 @@ Page({
     });
   },
 
-  // 删除事项
+  // 移除事项
   delItem: function(e) {
 		var that = this;
 		wx.showModal({
-			content: '确定要删除该事项吗？',
+			content: '确定要移除该事项吗？',
 			success: function (res) {
 				if (res.confirm) {
-					console.log('focusMode：删除事项 Id = ' + currItemId);
+          console.log('focusMode：移除事项 Id = ' + currItemId);
 					var temp = listHelper.delItemById(all.list, currItemId);
 					all.list = temp;
 					// 关闭操作菜单
@@ -178,10 +178,31 @@ Page({
 					showList(that);
 				
 				} else if (res.cancel) {
-					console.log('focusMode：取消删除事项');
+          console.log('focusMode：取消移除事项');
 				}
 			}
 		});
+  },
+
+  // 移除所有已完成的事项
+  delAllFinishedItem: function(e){
+    var that = this;
+    wx.showModal({
+      content: '确定要移除所有已完成的事项吗？',
+      success: function (res) {
+        if (res.confirm) {
+          var temp = listHelper.delAllFinishedItem(all.list);
+          all.list = temp;
+          // 从缓存中删除
+          updateStorageData();
+          // 更新界面
+          showList(that);
+          //console.log('focusMode：移除所有已完成的事项');
+        } else if (res.cancel) {
+          //console.log('focusMode：取消移除所有已完成的事项');
+        }
+      }
+    });
   },
 
   // 置顶事项
@@ -355,4 +376,10 @@ function updateStorageData(){
   } catch (e) {
     alert('缓存数据更新失败!');
   }
+};
+
+// 从缓存中删除所有已完成的事项
+function DelFinishedItemInStorageData(){
+  console.log("todoList：从缓存中删除所有已完成的事项");
+  var temp = [];
 };

@@ -116,6 +116,19 @@ function moveDownItemById(arr, id){
 };
 
 
+// 移除列表中所有已完成的事项
+function delAllFinishedItem(arr){
+  var temp = [];
+  for(var i = 0; i < arr.length; i++){
+    if(arr[i].finish == undefined || arr[i].finish == null){
+      temp.push(arr[i]);
+    } 
+  }
+
+  return temp;
+}
+
+
 module.exports = {
   getItemById: getItemById,
   delItemById: delItemById,
@@ -123,4 +136,5 @@ module.exports = {
   finishItemById: finishItemById,
 	moveUpItemById: moveUpItemById,
 	moveDownItemById: moveDownItemById,
+  delAllFinishedItem: delAllFinishedItem,
 };

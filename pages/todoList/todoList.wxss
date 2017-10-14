@@ -48,6 +48,10 @@
   right: 0;
 }
 
+
+/*
+* 添加事项
+*/
 .addItemView{
   width: 100%;
   background: lightgray;
@@ -55,12 +59,25 @@
   position:fixed;
   bottom: 0;
 }
-
 .addItemImage{
   width: 120rpx;
   height: 120rpx;
   vertical-align: middle;
 }
+
+
+/*
+* 移除所有已完成事项
+*/
+.delAllFinishedItem{
+  width: 100rpx;
+  height: 100rpx;
+  position:fixed;
+  bottom: 40rpx;
+  right: 40rpx;
+  text-align: center;
+}
+
 
 /*
 * 操作菜单
