@@ -2,7 +2,9 @@
 var app = getApp(); // 应用实例
 var listHelper = require("../../utils/listHelper.js");
 var defaultItem = require("../../data/defaultItem.js");
-var all = {};       // 显示的所有条目
+var all = {}; 	// 显示的所有条目
+var currItemId; // 当前点击的条目的ID
+var currMaskStatu; // 当前操作菜单遮罩层的状态
 
 Page({
 
@@ -192,30 +194,42 @@ Page({
     showList(this);
   },
 
+	// 事项上移
+	moveUp: function (e) {
+		
+	},
+
   // 点击Item，进入专注模式
-	/*
   focusMode: function (e){
     // 已完成的事项不能进入专注模式！
-    var item = listHelper.getItemById(all.list, e.currentTarget.dataset.id);
+    var item = listHelper.getItemById(all.list, currItemId);
     if (item.finish != null && item.finish == "fn"){
       console.log("todoList：已完成的事项不能进入专注模式，条目Id = " + e.currentTarget.dataset.id);
       return;
     }
-    // 页面跳转
-    console.log("todoList：跳转到 focusMode，条目Id = " + e.currentTarget.dataset.id);
+    
+		// 页面跳转
+    console.log("todoList：跳转到 focusMode，条目Id = " + currItemId);
     wx.navigateTo({
-      url: '../focusMode/focusMode?id=' + e.currentTarget.dataset.id,
+			url: '../focusMode/focusMode?id=' + currItemId,
     });
+
+		// 关闭遮罩层
+		if (currMaskStatu == "open") {
+			this.setData(
+				{
+					showModalStatus: false
+				}
+			);
+		};
   },
-	*/
 
   // 点击Item，弹出操作菜单
 	popupMenu: function (e) {
-		var currentStatu = e.currentTarget.dataset.statu;
-		this.util(currentStatu)
-	},
+		currMaskStatu = e.currentTarget.dataset.statu;
+		currItemId = e.currentTarget.dataset.id;
+		//console.log("todoList：点击条目，Id = " + currItemId); // 取消遮罩时，为undefined
 
-	util: function (currentStatu) {
 		/* 动画部分 */
 		// 第1步：创建动画实例 
 		var animation = wx.createAnimation({
@@ -245,7 +259,7 @@ Page({
 			})
 
 			//关闭 
-			if (currentStatu == "close") {
+			if (currMaskStatu == "close") {
 				this.setData(
 					{
 						showModalStatus: false
@@ -255,7 +269,7 @@ Page({
 		}.bind(this), 200)
 
 		// 显示 
-		if (currentStatu == "open") {
+		if (currMaskStatu == "open") {
 			this.setData(
 				{
 					showModalStatus: true

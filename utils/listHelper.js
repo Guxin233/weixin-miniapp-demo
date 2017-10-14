@@ -74,6 +74,9 @@ function finishItemById(arr, id){
   return temp;
 };
 
+// 根据Id，将条目上移一位
+
+
 module.exports = {
   getItemById: getItemById,
   delItemById: delItemById,
