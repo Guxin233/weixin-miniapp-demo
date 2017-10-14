@@ -3,6 +3,7 @@ var app = getApp(); // 应用实例
 var listHelper = require("../../utils/listHelper.js");
 var defaultItem = require("../../data/defaultItem.js");
 var all = {}; 	// 显示的所有条目
+var currItem;	  // 当前操作的条目
 var currItemId; // 当前点击的条目的ID
 var currMaskStatu; // 当前操作菜单遮罩层的状态
 
@@ -13,10 +14,12 @@ Page({
    */
   data: {
 		addItemContent : '', // 本次添加的事项的内容
-    finishItemId : -1, // 本次完成的事项的Id
+    finishItemId : -1,   // 本次完成的事项的Id
     userInfo: {},
     list: {},
     left: 0,
+		finishItemBg: "",   // 当前操作的条目的完成状态背景色
+		finishItemText: "", // 当前操作的条目的完成状态文字
   },
 
   /**
@@ -52,7 +55,7 @@ Page({
     console.log("todoList：onShow");
     
 		// ----test：清空本地数据
-		//wx.clearStorageSync();
+		wx.clearStorageSync();
 
     // 默认显示的条目
     var defaultData = {
@@ -196,8 +199,11 @@ Page({
   
   // 完成事项
   finishItem: function (e) {
-    var temp = listHelper.finishItemById(all.list, e.currentTarget.dataset.id);
+    var temp = listHelper.finishItemById(all.list, currItemId);
     all.list = temp;
+
+		// 关闭操作菜单
+		this.closePopupMenu();
     // 更新缓存数据
     updateStorageData();
     // 更新界面
@@ -247,7 +253,24 @@ Page({
 	popupMenu: function (e) {
 		currMaskStatu = e.currentTarget.dataset.statu;
 		currItemId = e.currentTarget.dataset.id;
-		//console.log("todoList：点击条目，Id = " + currItemId); // 取消遮罩时，为undefined
+		currItem = listHelper.getItemById(all.list, currItemId);
+		//console.log("todoList：点击条目，Id = " + currItemId); // 取消遮罩时，currItem为undefined
+
+		// 更新该条目的完成状态
+		if (currItem != null) { // 关闭操作菜单时，currItem为undefined
+			if (currItem.finish != null && currItem.finish == "fn") {
+				this.setData({
+					finishItemBg: "#FFAA25",
+					finishItemText: "未完成",
+				});
+			}
+			else {
+				this.setData({
+					finishItemBg: "#1AAD19",
+					finishItemText: "完成",
+				});
+			}
+		}
 
 		/* 动画部分 */
 		// 第1步：创建动画实例 
