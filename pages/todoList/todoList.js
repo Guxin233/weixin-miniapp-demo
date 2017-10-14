@@ -51,7 +51,7 @@ Page({
   onShow: function () {
     console.log("todoList：onShow");
     
-		// test：清空本地数据
+		// ----test：清空本地数据
 		//wx.clearStorageSync();
 
     // 默认显示的条目
@@ -73,7 +73,6 @@ Page({
       newItem.id = data.list.length + 1;
       newItem.content = this.data.addItemContent;
       data.list.unshift(newItem);
-
       // 清除数据
       this.setData({
         addItemContent : "",
@@ -86,7 +85,6 @@ Page({
       console.log("todoList：完成事项");
       var temp = listHelper.finishItemById(all.list, this.data.finishItemId);
       data.list = temp;
-
       // 清除数据
       this.setData({
         finishItemId : -1,
@@ -95,10 +93,8 @@ Page({
 
     // 读取缓存中的条目，如果不存在，就使用默认的
     all = data;
-    
     // 更新显示
     showList(this);
-
     // 更新缓存的数据
     updateStorageData();
   },
@@ -196,7 +192,13 @@ Page({
 
 	// 事项上移
 	moveUp: function (e) {
-		
+		all.list = listHelper.moveUpItemById(all.list, currItemId);
+		// 关闭操作菜单
+		this.closePopupMenu();
+		// 更新缓存数据
+		updateStorageData();
+		// 更新界面
+		showList(this);
 	},
 
   // 点击Item，进入专注模式
@@ -214,14 +216,8 @@ Page({
 			url: '../focusMode/focusMode?id=' + currItemId,
     });
 
-		// 关闭遮罩层
-		if (currMaskStatu == "open") {
-			this.setData(
-				{
-					showModalStatus: false
-				}
-			);
-		};
+		// 关闭操作菜单
+		this.closePopupMenu();
   },
 
   // 点击Item，弹出操作菜单
@@ -276,9 +272,21 @@ Page({
 				}
 			);
 		}
-	} 
+	},
 
-})
+	// 执行操作后，关闭操作菜单
+	closePopupMenu: function()
+	{
+		if (currMaskStatu == "open") {
+			this.setData(
+				{
+					showModalStatus: false
+				}
+			);
+		}
+	},
+
+});
 
 // 刷新显示列表
 function showList(currPage) {

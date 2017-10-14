@@ -3,8 +3,7 @@
  */
 
 // 获得指定arr列表中指定Id的条目
-function getItemById(arr, id)
-{
+function getItemById(arr, id){
   var item;
   for (var i = 0; i < arr.length; i++) {
     if (id == arr[i].id) {
@@ -74,7 +73,26 @@ function finishItemById(arr, id){
   return temp;
 };
 
-// 根据Id，将条目上移一位
+// 根据Id，将条目上移一位。就是跟前一个条目交换位置
+function moveUpItemById (arr, id){
+	var index; // 目标条目在列表中的角标
+
+	for (var i = 0; i < arr.length; i++){
+		if (arr[i].id == id){
+			index = i;
+			break;
+		}
+	}	
+
+	if(index < 1){
+		return arr; // 已经是首项了，不能与上一位交换了
+	}
+	var tempdata = arr[index];
+	arr[index] = arr[index - 1];
+	arr[index - 1] = tempdata;
+
+	return arr;
+};
 
 
 module.exports = {
@@ -82,4 +100,5 @@ module.exports = {
   delItemById: delItemById,
   topItemById: topItemById,
   finishItemById: finishItemById,
+	moveUpItemById: moveUpItemById,
 }
