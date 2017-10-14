@@ -26,6 +26,11 @@
 			<image class="addItemImage" src="../../images/add.png" mode="aspectFit"/>  
 		</view>
 
+		<!-- 删除所有已完成的事项 -->
+		<view class='delAllFinishedItem'>
+			<image src="../../images/add.png" mode="aspectFit"/>
+		</view>
+
 		<!-- 操作菜单 -->
 		<!--mask--> 
 		<view class="drawer_screen" bindtap="popupMenu" data-statu="close" wx:if="{{showModalStatus}}"></view> 

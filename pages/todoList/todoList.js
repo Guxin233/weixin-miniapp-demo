@@ -52,7 +52,7 @@ Page({
    */
   onShow: function () {
     console.log("todoList：onShow");
-    
+
 		// ----test：清空本地数据
 		wx.clearStorageSync();
 
@@ -118,7 +118,6 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  /*
   onPullDownRefresh: function () {
 		console.log("todoList onPullDownRefresh");
 		// 下拉页面 跳转到 添加条目页面
@@ -126,7 +125,6 @@ Page({
 			url: '../addItem/addItem',
 		});
   },
-  */
 
   /**
    * 页面上拉触底事件的处理函数

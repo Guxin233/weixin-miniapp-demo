@@ -14,7 +14,7 @@
 .item .content{
   width: 95%;
   float: left;
-	font-size: 17pt;
+	font-size: 14pt;
 	margin-left: 20rpx;
 }
 
