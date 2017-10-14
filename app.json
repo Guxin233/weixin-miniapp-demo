@@ -12,6 +12,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0094ff",
     "navigationBarTitleText": "Todo List",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+		"enablePullDownRefresh": true
   }
 }

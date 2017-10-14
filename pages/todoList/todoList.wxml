@@ -22,7 +22,7 @@
 		</view>
 
 		<!-- 添加事项 -->
-		<view class='addItemView' bindtap="addItem">
+		<view class='addItemView' style='display:none;' bindtap="addItem">
 			<image class="addItemImage" src="../../images/add.png" mode="aspectFit"/>  
 		</view>
 

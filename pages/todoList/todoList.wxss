@@ -12,9 +12,10 @@
 }
 
 .item .content{
-  width: 100%;
+  width: 95%;
   float: left;
-  margin-left: 20rpx;
+	font-size: 17pt;
+	margin-left: 20rpx;
 }
 
 .item .content .text{
