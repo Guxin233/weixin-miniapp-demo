@@ -33,11 +33,11 @@
 		<!--使用animation属性指定需要执行的动画--> 
 		<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}"> 
 			<!--drawer content-->
-			<view class="drawer_content"> 
+			<view class="drawer_content{{drawer_contentType}}"> 
 				<view class="button-sp-area">
 					<button class="weui-btn" type="default" bindtap='moveUp'>上移</button>
 					<button class="weui-btn" type="default" bindtap='moveDown'>下移</button>
-					<button class="weui-btn" type="default" bindtap='focusMode'>进入专注模式</button>
+					<button class="weui-btn" style='display:{{focusModeBtnDisplay}}' type="default" bindtap='focusMode'>进入专注模式</button>
 					<button class="weui-btn" style='background: {{finishItemBg}};' type="primary" bindtap='finishItem'>{{finishItemText}}</button>
 					<button class="weui-btn" type="warn" bindtap='delItem'>删除</button>
 				</view>

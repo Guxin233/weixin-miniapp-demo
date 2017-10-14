@@ -18,8 +18,10 @@ Page({
     userInfo: {},
     list: {},
     left: 0,
-		finishItemBg: "",   // 当前操作的条目的完成状态背景色
-		finishItemText: "", // 当前操作的条目的完成状态文字
+		finishItemBg: "",   	// 当前操作的条目的完成状态背景色
+		finishItemText: "", 	// 当前操作的条目的完成状态文字
+		focusModeBtnDisplay: "", // 是否显示进入专注模式的按钮
+		drawer_contentType: "",  // 按钮组容器的高度
   },
 
   /**
@@ -27,9 +29,6 @@ Page({
    */
   onLoad: function (options) {
     console.log("todoList：onLoad");
-    this.setData({
-
-    });
     var that = this;
 
     // 调用应用实例的方法获取全局数据
@@ -262,12 +261,16 @@ Page({
 				this.setData({
 					finishItemBg: "#FFAA25",
 					finishItemText: "未完成",
+					focusModeBtnDisplay: "none",
+					drawer_contentType: "_low",
 				});
 			}
 			else {
 				this.setData({
 					finishItemBg: "#1AAD19",
 					finishItemText: "完成",
+					focusModeBtnDisplay: "block",
+					drawer_contentType: "",
 				});
 			}
 		}

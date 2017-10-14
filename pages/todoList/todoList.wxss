@@ -96,13 +96,20 @@
  text-align: center; 
 } 
 .drawer_content { 
- height: 300px; 
+ height: 290px; /*显示专注模式按钮*/ 
  overflow-y: scroll; /*超出父盒子高度可滚动*/ 
  text-align: center;
  padding: 10rpx;
  background: #808080;
 } 
- 
+.drawer_content_low{ 
+ height: 230px; /*不显示专注模式按钮*/ 
+ overflow-y: scroll; /*超出父盒子高度可滚动*/ 
+ text-align: center;
+ padding: 10rpx;
+ background: #808080;
+} 
+
 .btn_ok{ 
  padding: 10px; 
  font: 20px "microsoft yahei"; 
