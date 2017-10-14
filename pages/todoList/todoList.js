@@ -201,7 +201,18 @@ Page({
 		showList(this);
 	},
 
-  // 点击Item，进入专注模式
+	// 事项下移
+	moveDown: function (e) {
+		all.list = listHelper.moveDownItemById(all.list, currItemId);
+		// 关闭操作菜单
+		this.closePopupMenu();
+		// 更新缓存数据
+		updateStorageData();
+		// 更新界面
+		showList(this);
+	},
+
+  // 进入专注模式
   focusMode: function (e){
     // 已完成的事项不能进入专注模式！
     var item = listHelper.getItemById(all.list, currItemId);
@@ -229,9 +240,9 @@ Page({
 		/* 动画部分 */
 		// 第1步：创建动画实例 
 		var animation = wx.createAnimation({
-			duration: 200, //动画时长 
-			timingFunction: "linear", //线性 
-			delay: 0 //0则不延迟 
+			duration: 100, // 动画时长 
+			timingFunction: "linear", // 线性 
+			delay: 0 // 0则不延迟 
 		});
 
 		// 第2步：这个动画实例赋给当前的动画实例 
@@ -262,7 +273,7 @@ Page({
 					}
 				);
 			}
-		}.bind(this), 200)
+		}.bind(this), 100)
 
 		// 显示 
 		if (currMaskStatu == "open") {
