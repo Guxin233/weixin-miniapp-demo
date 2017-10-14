@@ -162,12 +162,26 @@ Page({
 
   // 删除事项
   delItem: function(e) {
-    var temp = listHelper.delItemById(all.list, e.currentTarget.dataset.id);
-    all.list = temp;
-    // 更新缓存数据
-    updateStorageData();
-    // 更新界面
-    showList(this);
+		var that = this;
+		wx.showModal({
+			content: '确定要删除该事项吗？',
+			success: function (res) {
+				if (res.confirm) {
+					console.log('focusMode：删除事项 Id = ' + currItemId);
+					var temp = listHelper.delItemById(all.list, currItemId);
+					all.list = temp;
+					// 关闭操作菜单
+					that.closePopupMenu();
+					// 更新缓存数据
+					updateStorageData();
+					// 更新界面
+					showList(that);
+				
+				} else if (res.cancel) {
+					console.log('focusMode：取消删除事项');
+				}
+			}
+		});
   },
 
   // 置顶事项
@@ -219,14 +233,12 @@ Page({
     if (item.finish != null && item.finish == "fn"){
       console.log("todoList：已完成的事项不能进入专注模式，条目Id = " + e.currentTarget.dataset.id);
       return;
-    }
-    
+    }  
 		// 页面跳转
     console.log("todoList：跳转到 focusMode，条目Id = " + currItemId);
     wx.navigateTo({
 			url: '../focusMode/focusMode?id=' + currItemId,
     });
-
 		// 关闭操作菜单
 		this.closePopupMenu();
   },

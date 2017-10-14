@@ -39,7 +39,7 @@
 					<button class="weui-btn" type="default" bindtap='moveDown'>下移</button>
 					<button class="weui-btn" type="default" bindtap='focusMode'>进入专注模式</button>
 					<button class="weui-btn" type="primary" bindtap='finishItem'>完成</button>
-					<button class="weui-btn" type="warn" bindtap='moveUp'>删除</button>
+					<button class="weui-btn" type="warn" bindtap='delItem'>删除</button>
 				</view>
 			</view> 
 		</view> 
