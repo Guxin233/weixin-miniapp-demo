@@ -1,5 +1,5 @@
 # weixin-miniapp-demo
-微信小程序Demo，本地版的音乐播放器。
+微信小程序Demo，本地版的极简任务清单。
 
 学习资料：
 
